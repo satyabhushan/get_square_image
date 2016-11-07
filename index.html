@@ -1,0 +1,243 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <style>
+            *{
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            }
+            body{
+            background: #36465d; margin:0px; font-family:roboto,lato; line-height: 1.4; font-size:16px;
+            }
+            body[touchphone] *{
+            cursor: default !important;
+            }
+            a{
+            text-decoration:none; color: inherit;
+            }
+            svg{
+            height: 100%; width: 100%;
+            }
+            .head{
+            height:50px; width:100%; position:fixed; background:white; z-index:400; box-shadow: 0 0 8px #2D3848
+            }
+            .dmid{
+            width:1170px; margin:auto;
+            }
+            .e{
+            height:50px;
+            }
+            .dleft{
+            position:fixed; height:100%; width:270px; background:#36465d;
+            }
+            .dright{
+            margin-left:270px;
+            }
+            .emostyle{
+            height:20px; width:20px; vertical-align:middle;
+            }
+            .post-title{
+            font-weight:400; font-size:32px; line-height:47px; padding:0 20px; margin-bottom:10px;
+            }
+            .post-title > a{
+            font: inherit; color:inherit;
+            }
+            .mseem{
+            font-size:13px;font-weight:bold;padding: 10px 15px 0 15px;
+            }
+            .mseem > a{
+            font: inherit; color: green;
+            }
+            .overpg{
+            position:fixed; top:0; right:0; width:0; height:0; background:rgba(54,70,93,0.95); z-index:1000; opacity:0; -webkit-transition: 0.2s opacity, 0s height 0.2s,0s width 0.2s; transition: 0.2s opacity, 0s height 0.2s,0s width 0.2s; overflow: hidden;
+            }
+            .overpg-ani{ 
+            height: 100%; width: 100%; opacity: 1; -webkit-transition: 0.3s opacity; transition: 0.3s opacity; overflow:auto;
+            }
+            body.ani{
+            position: fixed; width:100%;
+            }
+            a.usl{
+            color: #128ee9;
+            }
+            img{
+            width: 100%;
+            }
+            .ldng{
+             position: absolute; top: 0; left: 0; bottom: 0; width: 100%;
+            }
+            .ldng > .loading{
+             list-style: none; margin: 0; padding: 0; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+            }
+            .loading li {
+            height: 0; position: absolute; top: 50%; left: 0; width: 0; margin: 0; height: 20px; width: 20px; border-radius: 100%; -webkit-transform: transformZ(0); transform: transformZ(0); -webkit-animation: LOADING 2s infinite; animation: LOADING 2s infinite; background: rgba(0,0,0,0.7)
+            }
+            .loading li:nth-child(1n) {
+             left: -25px; -webkit-animation-delay: 0s; animation-delay: 0s;
+            }
+            .loading li:nth-child(2n) {
+              left: 0; -webkit-animation-delay: 0.2s; animation-delay: 0.2s;
+            }
+            .loading li:nth-child(3n) {
+             left: 25px; -webkit-animation-delay: 0.4s; animation-delay: 0.4s;
+             }
+             @-webkit-keyframes LOADING {
+              0% {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+                //background: #2b8ccd;
+              }
+              50% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+                //background: white;
+              }
+              100% {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+                //background: #2b8ccd;
+              }
+            }
+             @keyframes LOADING {
+              0% {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+                //background: #2b8ccd;
+              }
+              50% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+                //background: white;
+              }
+              100% {
+                -webkit-transform: scale(0.5);
+                        transform: scale(0.5);
+                //background: #2b8ccd;
+              }
+            }
+
+            .dropdown{
+            position: absolute; top: 30px; border-radius: 15px; background: white; border: 1px solid rgba(0,0,0,0.05); height: 0; opacity: 0; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%); cursor: default; box-shadow: 0 0 20px -9px; z-index: 900; overflow: hidden;
+            }
+            .dropdown.active:before{
+            content: ""; position: absolute; width: 0; height: 0; top: -10px; left: 49%; box-sizing: border-box; border: 6px solid black; border-color: white white transparent transparent; box-shadow: 3px -3px 15px -6px; -webkit-transform: rotate( -45deg ) translateX( -50% ); transform: rotate( -45deg ) translateX( -50% );
+            }
+            .dropdown.active{
+            height: auto; opacity: 1; top: 50px; -webkit-transition: 0.1s opacity, 0.1s top; transition: 0.1s opacity, 0.1s top; padding: 15px 0; overflow: visible;
+            }
+            .dropdown ul{
+            padding:0; list-style: none;
+            }
+            .dropdown li{
+            position:relative; top:5px; padding:6px 25px; color:#4d4d4d; font-size: 15px; cursor: pointer;
+            }
+            .dropdown.active li{
+            top:0; -webkit-transition: 0.15s top 0.1s, 0.1s background; transition:0.15s top 0.1s, 0.1s background; background: #fff;
+            }
+            .dropdown li:hover{
+            background: #f7f7f7;color:#2b65f8; 
+            }
+            .vm{
+            position: relative;display: inline-block;vertical-align: middle;
+            }
+            .vercenter{
+            position: relative; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%);
+            }
+            .horcenter{
+            position: relative; left: 50%; -webkit-transform: translateX(-50%); transform: translateX(-50%);
+            }
+            .incenter{
+            position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);
+            }
+            .notify{
+                position:fixed;top:0px;z-index:1000;background:#4285f4;padding: 10px;text-align: center; border-radius: 5px;color: white; box-shadow: 0 3px 12px -2px #3160ae; -webkit-transition: 1s ease-in; transition: 1s ease-in;
+            }
+            .notify.active{
+                top:50px;
+            }
+            button{
+            background: none; border:none; padding: 0; outline: none;
+            }
+        </style>
+        <style type="text/css">
+            .slb {
+               position: relative; background-color:#4294f6; border: none; font-size: 28px; color: #FFFFFF; width: 20px; height: 20px; border-radius: 50%; text-decoration: none; cursor: pointer; outline:none;
+            }
+
+            .slb:after {
+               content: ""; background: #4CAF50 ; display: block; position: absolute; top:50%; left:50%; transform: translate(-50%, -50% ); margin:auto; height:0; width:0; opacity: 0; border-radius: 50%; opacity:1; transition: 0;
+            }
+            .slb:active:after { 
+               height:30px; width:30px; opacity: 0; transition: height 0.2s, width 0.2s, opacity 0.2s ease-out;
+            }
+            .mainCont{
+                width: 500px; height: calc(100% - 20px); margin: auto; box-sizing: border-box; background:white; border-radius:5px; overflow:hidden;
+            }
+            .checkbtnd{
+               position: absolute; width: 100%; padding: 15px; z-index: 200; border-top:1px solid rgba(0,0,0,0.1); box-sizing: border-box;
+            }
+            .checkbtnd i {
+                fill: rgba(0,0,0,0.7);
+            }
+            .contimg{
+               position: absolute; top: 100px; left: 15px; width: 400px; height: 400px; 
+            }
+            @media only screen and (min-width: 0px) and (max-width: 499px) {
+               .mainCont{
+                  width:calc( 100% - 10px );
+               }
+               .checkbtnd{
+                   left: 15px; width: calc(100% - 30px);
+               }
+               .contimg{
+                  left:15px;
+               }
+            }
+       </style>
+    </head>
+    <body>
+        <div style="display:none;">
+           <svg xmlns="http://www.w3.org/2000/svg">
+              <symbol id="icon-img" viewBox="0 0 32 32">
+                 <path d="m30.5 15.9l0.8-6c0.1-1-0.1-1.9-0.7-2.7-0.6-0.7-1.4-1.2-2.4-1.4l-1.3-0.2-0.9-2.5c-0.4-1.1-1.5-1.6-2.6-1.3l-6.8 2.4-9.6-1.3h-0.6c-1.7 0-3.2 1.3-3.5 3.1l-0.4 3.1-1.1 0.4c-1.1 0.4-1.6 1.5-1.3 2.6l1.4 3.9-0.8 6c-0.3 2 1.1 3.8 3.1 4.1l1.3 0.2 0.9 2.6c0.4 1.1 1.5 1.6 2.6 1.3l6.8-2.4 9.6 1.3h0.6c1.8-0.1 3.3-1.4 3.5-3.2l0.4-3.1 1.1-0.4c1.1-0.4 1.6-1.5 1.3-2.6l-1.4-3.9zm-2.3-6.4l-1.6 11.7-5.3-7c-0.3-0.4-1-0.5-1.4-0.2l-6.7 5-2.9-3.8c-0.3-0.4-1-0.5-1.4-0.2l-4.5 3.4 1.7-12c0-0.3 0.2-0.4 0.4-0.4h0.1l21.1 2.9c0.2 0 0.3 0.1 0.3 0.2 0.1 0.1 0.2 0.2 0.2 0.4zm-12.1 2c-0.2 1.3-1.4 2.2-2.7 2.1-1.3-0.2-2.2-1.4-2.1-2.7s1.4-2.2 2.7-2.1c1.3 0.1 2.3 1.4 2.1 2.7z"></path>
+              </symbol>
+                <symbol id="icon-cross" viewBox="0 0 32 32">
+                  <path class="st0" d="M31.3.7c-.9-.9-2.5-.9-3.4 0L16 12.6 4.1.7C3.2-.2 1.6-.2.7.7c-.9.9-.9 2.5 0 3.4L12.6 16 .7 27.9c-.9.9-.9 2.5 0 3.4.5.5 1.1.7 1.7.7s1.2-.2 1.7-.7L16 19.4l11.9 11.9c.5.5 1.1.7 1.7.7.6 0 1.2-.2 1.7-.7.9-.9.9-2.5 0-3.4L19.4 16 31.3 4.1c.9-.9.9-2.5 0-3.4z"></path>
+                </symbol>
+           </svg>
+        </div>
+        <div class="mainCont incenter">
+            <div style="position: relative; padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: white; z-index: 200; ">
+            <div class="" style=" ">
+               <div class="btn cancelsave detachZoomButton" style=" cursor: pointer;">
+                        <i class="vm" style="height: 17px; width: 17px; fill: rgba(0,0,0,0.7) ">
+                            <svg class="icon-svg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cross"></use></svg>
+                        </i>     
+                    </div>
+               <div class="btn saveonline detachZoomButton" style="position: absolute; top: 15px; right: 15px; font-size: 17px; font-weight: bold; color: #4285f4; cursor: pointer;">SAVE</div>
+            </div>
+            </div>
+         <div class="contimg" style="overflow: hidden; ">
+            <img class="rimg move Vertualresizeimg1" src="../Unnamed%20Site%202/28.jpeg" style="max-width: none; position: absolute; top: 0; left:0; width: 400px; ">
+            <div style="position: absolute;width: 100%;height: 100%;border: 2px solid #fff;box-sizing: border-box;"></div>
+         </div>
+         <div class="contimg">
+            <div class="" style="position: absolute; top: 0; left:0; height: 100%; width: 100%; "></div>
+            <img class="rimg img2 move Vertualresizeimg2" src="../Unnamed%20Site%202/28.jpeg" style="max-width: none; position: absolute; top: 0; left:0; width: 400px; opacity: 0.3 ">
+         </div>
+         <div class="checkbtnd" style="bottom: 0px; background: white;">
+            <i class="vm" style="height: 20px; width: 20px;">
+               <svg class="icon-svg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-img"></use></svg>
+            </i>
+            <div class="vm" style="position: relative; margin: 0 5px; height: 10px; width: calc(100% - 69px); ">
+               <div class="slbrail" style="position: relative; width: 100%; height: 2px; background:rgba(0, 0, 0, 0.32); top:50%; transform: translateY(-50%);"></div>
+               <div class="slbcomp" style="position: absolute; width: 0; height: 2px; background: #4294f6; top:50%; transform: translateY(-50%);"></div>
+               <div class="slb" style="position:absolute; top:50%; transform: translateY(-50%); left:0"></div>
+            </div>
+            <i class="vm" style="height: 30px; width: 30px;">
+               <svg class="icon-svg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-img"></use></svg>
+            </i>
+         </div>
+      </div>
+</html>
